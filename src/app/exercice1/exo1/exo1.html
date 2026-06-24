@@ -1,0 +1,25 @@
+<h2>Exercice 1 : Mise en forme dynamique</h2>
+
+<input [(ngModel)]="nom" placeholder="Entrez votre nom" />
+
+<select [(ngModel)]="police">
+  @for (p of polices; track p) {
+    <option [value]="p">{{p}}</option>
+  }
+</select>
+
+<input type="number" [(ngModel)]="taille" /> px
+
+<div>
+  <input type="radio" value="left" [(ngModel)]="alignement" name="align"> Gauche
+  <input type="radio" value="center" [(ngModel)]="alignement" name="align"> Centre
+  <input type="radio" value="right" [(ngModel)]="alignement" name="align"> Droite
+</div>
+
+<hr />
+
+<div [style.font-family]="police" 
+     [style.font-size.px]="taille" 
+     [style.text-align]="alignement">
+  Bonjour {{ nom | uppercase }} !
+</div>
