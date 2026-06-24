@@ -1,0 +1,22 @@
+@if (transaction) {
+  <div class="transaction-card">
+    <h2>Détail de l'opération</h2>
+    <div class="card-body">
+      <p><strong>Label :</strong> {{ transaction.label }}</p>
+      <p><strong>Date :</strong> {{ transaction.date | date:'medium' }}</p>
+      <p><strong>Montant :</strong> 
+        <span [class.negative]="transaction.amount < 0">
+          {{ transaction.amount | currency }}
+        </span>
+      </p>
+      <p><strong>Solde :</strong> {{ transaction.balance | currency }}</p>
+      <p><strong>ID :</strong> {{ transaction.id }}</p>
+    </div>
+    
+    <div class="card-footer">
+      <a routerLink="/exo3" class="back-button">Retour à la liste</a>
+    </div>
+  </div>
+} @else {
+  <div class="loading">Chargement des détails...</div>
+}

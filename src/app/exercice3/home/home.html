@@ -1,0 +1,22 @@
+<table>
+<thead>
+  <tr>
+    <th (click)="trier('date')" style="cursor: pointer;">Date ^</th>
+    <th (click)="trier('label')" style="cursor: pointer;">Libellé ^</th>
+    <th (click)="trier('amount')" style="cursor: pointer;">Montant ^</th>
+    <th (click)="trier('balance')" style="cursor: pointer;">Solde ^</th>
+  </tr>
+</thead>
+  <tbody>
+    @for (t of transactions; track t.id) {
+      <tr [routerLink]="['/exo3/detail', t.id]">
+        <td>{{ t.date | date:'short' }}</td>
+        <td>{{ t.label }}</td>
+        <td>{{ t.amount | currency }}</td>
+        <td>{{ t.balance | currency }}</td>
+      </tr>
+    } @empty {
+      <tr><td colspan="4">Aucune transaction trouvée.</td></tr>
+    }
+  </tbody>
+</table>
