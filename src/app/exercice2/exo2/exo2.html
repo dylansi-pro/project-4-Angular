@@ -1,1 +1,24 @@
-<p>exo2 works!</p>
+<div>
+  <input type="number" [(ngModel)]="n1">
+  
+  <select [(ngModel)]="operation">
+    <option>+</option><option>-</option><option>*</option><option>/</option>
+  </select>
+
+  <input type="number" [(ngModel)]="n2">
+  <button (click)="calculer()">Calculer</button>
+</div>
+
+@if (resultat !== null) {
+  <p>Résultat : {{ resultat }}</p>
+}
+
+<h3>Historique</h3>
+<ul>
+  @for (op of historique; track op.id) {
+    <li>
+      {{ op.heure }} : {{ op.expression }} = {{ op.resultat }}
+      <button (click)="supprimer(op.id)">Effacer</button>
+    </li>
+  }
+</ul>
