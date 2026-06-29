@@ -4,4 +4,11 @@
   <a routerLink="/exo3" routerLinkActive="active">Exercice 3</a>
 </nav>
 
+@if (currentUrl.startsWith('/exo3')) {
+  <header>
+    <h1>Ma Banque</h1>
+    <p>Date : {{ currentTime | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+  </header>
+}
+
 <router-outlet></router-outlet>
